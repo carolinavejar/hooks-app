@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useForm } from '../../hooks/useForm';
 import { Message } from './Message';
 
 export const SimpleForm = () => {
 
-    const [formState, setFormState] = useState({
+    const [formState, setFormState] = useForm({
         name : '',
         email: ''
     });
@@ -37,7 +38,7 @@ export const SimpleForm = () => {
                 <input
                     type="text"
                     name="name"
-                    className="form-class"
+                    className="form-control"
                     placeholder="Tu nombre"
                     autoComplete="off"
                     value={ name }
@@ -48,7 +49,7 @@ export const SimpleForm = () => {
                 <input
                     type="text"
                     name="email"
-                    className="form-class"
+                    className="form-control"
                     placeholder="Tu correo"
                     autoComplete="off"
                     value={ email }
@@ -56,7 +57,7 @@ export const SimpleForm = () => {
                 />
             </div>
 
-            { name == '123' && <Message />}
+            { name === '123' && <Message />}
         </>
     )
 }

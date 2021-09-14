@@ -41,3 +41,11 @@
         height: 32px;
     }
 }
+
+/* body {
+    padding: 70px;
+} */
+
+.blockquote {
+    display: flex;
+}

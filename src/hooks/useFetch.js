@@ -21,17 +21,15 @@ export const useFetch = (url) => {
             fetch(url)
             .then (resp => resp.json() )
             .then ((data) => {
-                setTimeout(() => {
-                    if(isMounted.current) {
-                        setstate({
-                            loading: false,
-                            error: null,
-                            data: data
-                        })
-                    } else {
-                        console.log(`no se mostró`);
-                    }
-                }, 5000);
+                if(isMounted.current) {
+                    setstate({
+                        loading: false,
+                        error: null,
+                        data: data
+                    })
+                } else {
+                    console.log(`no se mostró`);
+                }
             })
         }, [url]);
 

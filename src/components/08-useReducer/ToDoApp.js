@@ -1,8 +1,8 @@
 import React, { useReducer } from 'react';
 import '../css/index.css';
-import { toDoReducer } from './toDoReducer';
+import { todoReducer } from './todoReducer';
 
-export const ToDoApp = () => {
+export const TodoApp = () => {
 
     const initialState = [{
         id: new Date().getTime(),
@@ -10,11 +10,29 @@ export const ToDoApp = () => {
         done: false
     }]
 
-    const [ toDos] = useReducer(toDoReducer, initialState);
-    console.log(toDos);
+    const [ todos, dispatch ] = useReducer(todoReducer, initialState);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const newTodo = {
+            id: new Date().getTime(),
+            desc: 'Nueva tarea',
+            done: false
+        }
+
+        const action = {
+            type: 'add',
+            payload: newTodo
+        };
+        dispatch(action);
+        console.log(`Nueva tarea`);
+    };
+
+    
+    console.log(todos);
     return (
         <div id = "todoList">
-            <h1>To Do App ( {toDos.length} )</h1>
+            <h1>To Do App ( {todos.length} )</h1>
             <hr />
 
             <div className = "row">
@@ -22,7 +40,7 @@ export const ToDoApp = () => {
                     
                     <ul>
                         {
-                            toDos.map( (todo, i) => (
+                            todos.map( (todo, i) => (
                                 <li
                                     key = { todo.id }
                                     className = "list-group-item"
@@ -43,7 +61,7 @@ export const ToDoApp = () => {
                 <div className="col-5">
                     <h4>Agregar TO DO</h4>
                     <hr />
-                    <form>
+                    <form onSubmit = { handleSubmit }>
                         <div className = "d-grid gap-2">
                             <input
                                 className = "form-control"
@@ -53,6 +71,7 @@ export const ToDoApp = () => {
                                 autoComplete = "off"
                             />
                             <button 
+                                type = "submit"
                                 className="btn btn-outline-primary btn-block mt-1" 
                             >
                                 Agregar

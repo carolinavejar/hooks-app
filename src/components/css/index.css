@@ -50,7 +50,7 @@
     display: flex;
 }
 
-#btnBorrar {
+.btnBorrar {
     margin-left: 30px;
 }
 #todoList small {

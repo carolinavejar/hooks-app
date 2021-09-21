@@ -24,7 +24,24 @@ export const TodoApp = () => {
 
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos));
-    }, [todos])
+    }, [todos]);
+
+    const handleDelete = ( e ) => {
+        console.log( e );
+        console.log( e.target.id );
+
+        const deleteTodo = {
+            id: e.target.id,
+        }
+
+        const action = {
+            type: 'remove',
+            payload: deleteTodo
+        };
+
+        dispatch(action);
+
+    }
 
     const handleSubmit = (e) => {
         if(description.trim().length <= 0){
@@ -46,9 +63,7 @@ export const TodoApp = () => {
         console.log(description);
     };
 
-    
-    console.log(todos);
-    return (
+     return (
         <div id = "todoList">
             <h1>To Do App ( {todos.length} )</h1>
             <hr />
@@ -66,8 +81,9 @@ export const TodoApp = () => {
                                     <small>{ i + 1 }. {todo.desc}</small>
 
                                     <button 
-                                        className="btn btn-outline-primary ml-3" 
-                                        id = "btnBorrar"
+                                        className="btn btn-outline-primary ml-3 btnBorrar" 
+                                        id = { todo.id }
+                                        onClick = { handleDelete }
                                     >
                                         Borrar
                                     </button>

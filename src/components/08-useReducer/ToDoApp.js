@@ -43,6 +43,13 @@ export const TodoApp = () => {
 
     }
 
+    const handleToggle = (pID) => {
+        dispatch( {
+            type: 'toggle',
+            payload: pID
+        });
+    };
+
     const handleSubmit = (e) => {
         if(description.trim().length <= 0){
             return;
@@ -63,7 +70,7 @@ export const TodoApp = () => {
         console.log(description);
     };
 
-     return (
+    return (
         <div id = "todoList">
             <h1>To Do App ( {todos.length} )</h1>
             <hr />
@@ -78,7 +85,12 @@ export const TodoApp = () => {
                                     key = { todo.id }
                                     className = "list-group-item"
                                 >
-                                    <small>{ i + 1 }. {todo.desc}</small>
+                                    <small
+                                        className = { `${ todo.done &&  'complete' }`}
+                                        onClick = { () => {  handleToggle(todo.id) } }
+                                    >
+                                            { i + 1 }. {todo.desc}
+                                    </small>
 
                                     <button 
                                         className="btn btn-outline-primary ml-3 btnBorrar" 

@@ -1,10 +1,10 @@
 import React from 'react'
+import { AppRouter } from './AppRouter'
 
 export const MainApp = () => {
     return (
         <>
-            <h3>Main App</h3>
-            <hr />
+            <AppRouter></AppRouter>
         </>
     )
 }

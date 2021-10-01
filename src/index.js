@@ -16,9 +16,10 @@ import { MainApp } from './components/09-useContext/MainApp';
 // import { HooksApp } from './HooksApp';
 
 ReactDOM.render(
-  <div className="container">
+  
+  <>
     <MainApp />
-  </div>,
+  </>,
     
   document.getElementById('root')
 );

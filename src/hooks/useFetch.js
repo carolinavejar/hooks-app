@@ -30,6 +30,12 @@ export const useFetch = (url) => {
                 } else {
                     console.log(`no se mostró`);
                 }
+            }).catch(() => {
+                setstate({
+                    data: null,
+                    loading: false,
+                    error: 'No se pudo cargar la información'
+                })
             })
         }, [url]);
 

@@ -6,6 +6,7 @@ export const MainApp = () => {
 
     const [user, setUser] = useState({})
 
+    //Comparte UserContext a sus componentes hijos  -> AppRouter
     return (
         <UserContext.Provider value = { {
             user,

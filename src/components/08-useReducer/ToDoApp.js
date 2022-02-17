@@ -17,12 +17,11 @@ export const TodoApp = () => {
         localStorage.setItem('todos', JSON.stringify(todos));
     }, [todos]);
 
-    const handleDelete = ( e ) => {
-        console.log( e );
-        console.log( e.target.id );
+    const handleDelete = ( id ) => {
+        console.log( id );
 
         const deleteTodo = {
-            id: e.target.id,
+            id: id,
         }
 
         const action = {
